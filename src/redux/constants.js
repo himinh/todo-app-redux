@@ -1,2 +1,5 @@
 export const ADD_TODO = 'todos/addTodo'
+export const TOGGLE_TODO_STATUS = 'todos/toggleTodoStatus'
 export const SEARCH_FILTER_CHANGE = 'filters/searchFilterChange'
+export const STATUS_FILTER_CHANGE = 'filters/statusFilterChange'
+export const PRIORITIES_FILTER_CHANGE = 'filters/prioritiesFilterChange'

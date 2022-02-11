@@ -19,7 +19,7 @@ export default function TodoList() {
       addTodo({
         id: uuidv4(),
         name: todoName,
-        prioriry: priority,
+        priority: priority,
         completed: false,
       })
     )
@@ -29,11 +29,14 @@ export default function TodoList() {
   return (
     <Row style={{ height: 'calc(100% - 40px)' }}>
       <Col span={24} style={{ height: 'calc(100% - 40px)', overflowY: 'auto' }}>
-        {/* <Todo name='Learn React' prioriry='High' />
-        <Todo name='Learn Redux' prioriry='Medium' />
-        <Todo name='Learn JavaScript' prioriry='Low' /> */}
         {todos.map(todo => (
-          <Todo key={todo.id} name={todo.name} prioriry={todo.prioriry} />
+          <Todo
+            key={todo.id}
+            id={todo.id}
+            name={todo.name}
+            priority={todo.priority}
+            completed={todo.completed}
+          />
         ))}
       </Col>
       <Col span={24}>
