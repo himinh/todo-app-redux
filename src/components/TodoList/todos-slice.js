@@ -1,23 +1,19 @@
-import { ADD_TODO, TOGGLE_TODO_STATUS } from '../../redux/constants'
-const initState = [
-  { id: 1, name: 'Learn yoga', priority: 'Medium', completed: false },
-  { id: 2, name: 'Learn javascript', priority: 'Low', completed: true },
-  { id: 3, name: 'Learn Redux', priority: 'High', completed: false },
-]
+import { createSlice } from '@reduxjs/toolkit'
 
-const todosReducer = (state = initState, action) => {
-  switch (action.type) {
-    case ADD_TODO:
-      return [...state, action.payload]
-    case TOGGLE_TODO_STATUS:
-      return state.map(todo =>
-        todo.id === action.payload
-          ? { ...todo, completed: !todo.completed }
-          : todo
-      )
-    default:
-      return state
-  }
-}
-
-export default todosReducer
+export default createSlice({
+  name: 'todos',
+  initialState: [
+    { id: 1, name: 'Learn yoga', priority: 'Medium', completed: false },
+    { id: 2, name: 'Learn javascript', priority: 'Low', completed: true },
+    { id: 3, name: 'Learn Redux', priority: 'High', completed: false },
+  ],
+  reducers: {
+    addTodo: (state, action) => {
+      state.push(action.payload)
+    },
+    toggleTodoStatus: (state, action) => {
+      const currentTodo = state.find(todo => todo.id === action.payload)
+      currentTodo.completed = !currentTodo.completed
+    },
+  },
+})

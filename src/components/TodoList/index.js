@@ -4,8 +4,8 @@ import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 import { v4 as uuidv4 } from 'uuid'
 import Todo from '../Todo'
-import { addTodo } from '../../redux/actions'
 import { todosRemainingSelector } from '../../redux/selectors'
+import todosSlice from './todos-slice'
 
 export default function TodoList() {
   const [todoName, setTodoName] = useState('')
@@ -16,7 +16,7 @@ export default function TodoList() {
 
   const handleAddButtonClick = () => {
     dispatch(
-      addTodo({
+      todosSlice.actions.addTodo({
         id: uuidv4(),
         name: todoName,
         priority: priority,

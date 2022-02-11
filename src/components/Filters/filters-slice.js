@@ -1,36 +1,22 @@
-import {
-  PRIORITIES_FILTER_CHANGE,
-  SEARCH_FILTER_CHANGE,
-  STATUS_FILTER_CHANGE,
-} from '../../redux/constants'
+import { createSlice } from '@reduxjs/toolkit'
 
-const initState = {
-  search: '',
-  status: 'all',
-  priorities: [],
-}
-const filtersReducer = (state = initState, action) => {
-  switch (action.type) {
-    case SEARCH_FILTER_CHANGE:
-      return {
-        ...state,
-        search: action.payload,
-      }
-
-    case STATUS_FILTER_CHANGE:
-      return {
-        ...state,
-        status: action.payload,
-      }
-
-    case PRIORITIES_FILTER_CHANGE:
-      return {
-        ...state,
-        priorities: action.payload,
-      }
-    default:
-      return state
-  }
-}
-
-export default filtersReducer
+export default createSlice({
+  name: 'filters',
+  initialState: {
+    search: '',
+    status: 'all',
+    priorities: [],
+  },
+  reducers: {
+    searchFilterChange: (state, action) => {
+      // mutation
+      state.search = action.payload
+    }, // type: 'filters/searchFilterChange'
+    statusFilterChange: (state, action) => {
+      state.status = action.payload
+    },
+    prioritiesFilterChange: (state, action) => {
+      state.priorities = action.payload
+    },
+  },
+})
